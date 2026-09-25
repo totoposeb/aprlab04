@@ -1,0 +1,21 @@
+# R
+.Rhistory
+.Rapp.history
+.RData
+.Ruserdata
+*.Rproj.user/
+*.Rcheck/
+.Renviron
+
+# renv
+renv/library/
+renv/local/
+renv/cellar/
+renv/lock/
+renv/python/
+renv/staging/
+
+# Sistema
+.DS_Store
+.vscode/
+inst/doc

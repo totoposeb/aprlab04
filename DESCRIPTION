@@ -1,0 +1,21 @@
+Package: aprlab04
+Title: Advanced R Programming Lab 04
+Version: 0.0.0.9000
+Authors@R: 
+    c(
+    person("Sebastián","Soriano Pérez",,"sebso409@student.liu.se", role = c("aut", "cre")),
+    person("Yuanyu","Xia",,"yuaxi059@student.liu.se", role = "aut")
+  )
+Description: A linear regression package in R.
+License: MIT + file LICENSE
+Config/roxygen2/version: 8.1.0
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+Imports: 
+    ggplot2
+Suggests: 
+    knitr,
+    rmarkdown,
+    testthat (>= 3.0.0)
+VignetteBuilder: knitr
+Config/testthat/edition: 3

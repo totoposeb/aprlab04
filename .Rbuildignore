@@ -1,0 +1,5 @@
+^LICENSE\.md$
+^renv$
+^renv\.lock$
+^\.Rprofile$
+^\.github$
