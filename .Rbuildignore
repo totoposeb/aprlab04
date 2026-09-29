@@ -3,3 +3,5 @@
 ^renv\.lock$
 ^\.Rprofile$
 ^\.github$
+^.*\.Rproj$
+^\.Rproj\.user$

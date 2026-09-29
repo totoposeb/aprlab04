@@ -56,6 +56,8 @@
 #' m2 <- linreg$new(Petal.Length ~ Species, data = iris)
 #' m2$plot()
 #'
+#' @importFrom methods new setRefClass
+#' @importFrom ggplot2 ggplot
 #' @export linreg
 #' @exportClass linreg
 linreg <- setRefClass(
