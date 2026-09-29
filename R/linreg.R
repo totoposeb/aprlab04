@@ -1,3 +1,63 @@
+#' Linear regression using the QR decomposition
+#'
+#' @description
+#' `linreg` is a reference class (RC) for multiple linear regression. Creating
+#' an object with `linreg$new(formula, data)` fits the model: the coefficients
+#' are estimated with the QR decomposition of the design matrix, and the
+#' results are stored in the object's fields.
+#'
+#' @details
+#' `linreg$new()` takes two arguments:
+#' * `formula`: a formula such as `y ~ x1 + x2`. The left side is the
+#'   dependent variable; the right side lists the independent variables.
+#' * `data`: a data frame containing every variable in `formula`.
+#'
+#' The design matrix \eqn{X} is split as \eqn{X = QR}. The coefficients solve
+#' \eqn{R\hat{\beta} = Q^T y}{R beta = Q'y}, and their variance is
+#' \eqn{\hat{\sigma}^2 (R^T R)^{-1}}{sigma^2 (R'R)^(-1)}.
+#'
+#' @section Methods:
+#' * `print()`: prints the call and the coefficients.
+#' * `plot()`: draws two diagnostic plots with ggplot2: residuals against
+#'   fitted values, and the square root of the absolute standardized
+#'   residuals against fitted values (Scale-Location).
+#' * `resid()`: returns the vector of residuals.
+#' * `pred()`: returns the vector of fitted values.
+#' * `coef()`: returns the named vector of coefficients.
+#' * `summary()`: prints each coefficient with its standard error, t-value,
+#'   p-value and significance stars, followed by the residual standard error
+#'   and the degrees of freedom.
+#'
+#' @field formula The model formula.
+#' @field data_name Name of the data frame passed as `data`, used when
+#'   printing.
+#' @field X Design matrix built with [stats::model.matrix()].
+#' @field y Values of the dependent variable.
+#' @field beta Named vector of estimated coefficients.
+#' @field y_hat Fitted values.
+#' @field t_value t-values of the coefficients.
+#' @field p_value p-values of the coefficients.
+#' @field e Residuals.
+#' @field V_e Residual variance.
+#' @field dof Degrees of freedom: number of observations minus number of
+#'   coefficients.
+#' @field se Standard errors of the coefficients.
+#'
+#' @seealso [stats::lm()], which fits the same model.
+#'
+#' @examples
+#' m <- linreg$new(Petal.Length ~ Sepal.Width + Sepal.Length, data = iris)
+#' m$print()
+#' m$coef()
+#' head(m$pred())
+#' head(m$resid())
+#' m$summary()
+#'
+#' m2 <- linreg$new(Petal.Length ~ Species, data = iris)
+#' m2$plot()
+#'
+#' @export linreg
+#' @exportClass linreg
 linreg <- setRefClass(
   "linreg", # "linreg" is the class name
   fields  = list(
