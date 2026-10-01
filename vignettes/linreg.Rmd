@@ -17,3 +17,87 @@ knitr::opts_chunk$set(
 ```{r setup}
 library(aprlab04)
 ```
+
+## Introduction
+
+This package includes an implementation of a multiple linear regression algorithm `linreg`, using QR decomposition and implemented as a reference class (RC).
+
+## The data
+
+<!-- TODO: Describe iris: 150 flowers, their measurements and their species. -->
+For this demonstration the Iris dataset will be used. From its own documentation in R:
+     This famous (Fisher's or Anderson's) iris data set gives the
+     measurements in centimeters of the variables sepal length and
+     width and petal length and width, respectively, for 50 flowers
+     from each of 3 species of iris.  The species are _Iris setosa_,
+     _versicolor_, and _virginica_.
+
+```{r}
+head(iris)
+```
+
+## Fitting a model
+
+To create a `linreg` object, run:
+
+```{r}
+m <- linreg$new(Petal.Length ~ Sepal.Width + Sepal.Length, data = iris)
+```
+
+The first argument will be a `formula` object such as `y ~ x1 + x2`. The left side is the dependent variable and the right side are the independent variables.
+
+The second argument `data` contains a data.frame with all the variables in `formula`.
+
+After running this statement, the linear regression is performed and everything is stored within `m`.
+
+## Printing the model: `print()`
+
+Calling the `print()` method displays how the model was called as well as a table showing the fitted values of the coefficients (betas).
+
+```{r}
+m$print()
+```
+
+## Coefficients: `coef()`
+
+The `coef()` method displays the table with the values of the fitted coefficients (betas).
+
+```{r}
+m$coef()
+```
+
+## Fitted values and residuals: `pred()` and `resid()`
+
+The `pred()` method prints a vector with the predicted values (`y_hat`) of the dependent variable (`y`) using the fitted linear regression model.
+
+```{r}
+m$pred()
+```
+
+The `resid()` method prints a vector with the residuals (`y - y_hat`) using the fitted linear regression model.
+
+```{r}
+m$resid()
+```
+
+## Summary: `summary()`
+
+The `summary()` method displays a table showing the point estimates for each fitted coefficient (betas), as well as their standard errors, t-values, p-values and significance level using the same star system `lm` does.
+
+```{r}
+m$summary()
+```
+
+## Diagnostic plots: `plot()`
+
+The `plot()` method displays two plots using `ggplot2`, which help check whether the linear regression model fits the data well:
+
+1. **Residuals vs Fitted** shows the residuals (`y - y_hat`) against the fitted values (`y_hat`). If the model fits well, the points are spread evenly around 0 with no clear pattern.
+2. **Scale-Location** shows the square root of the absolute standardized residuals (each residual divided by the residual standard error) against the fitted values. If the model fits well, the spread of the points stays about the same for all fitted values.
+
+In both plots, the red line joins the median of the points at each fitted value:
+
+```{r, fig.width = 7, fig.height = 4}
+m_species <- linreg$new(Petal.Length ~ Species, data = iris)
+m_species$plot()
+```
