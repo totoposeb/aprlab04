@@ -12,8 +12,9 @@ This repository contains an implementation of the multiple linear regression alg
 You can install the development version of aprlab04 from [GitHub](https://github.com/) with:
 
 ``` r
-# install.packages("devtools")
-devtools::install_github("totoposeb/aprlab04", build_vignettes = TRUE)
+# install.packages("pak")
+options(pkg.build_vignettes = TRUE)
+pak::pak("totoposeb/aprlab04")
 ```
 
 ## Example
