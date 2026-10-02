@@ -13,7 +13,7 @@ You can install the development version of aprlab04 from [GitHub](https://github
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("totoposeb/aprlab04")
+devtools::install_github("totoposeb/aprlab04", build_vignettes = TRUE)
 ```
 
 ## Example
