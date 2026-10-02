@@ -24,13 +24,9 @@ This package includes an implementation of a multiple linear regression algorith
 
 ## The data
 
-<!-- TODO: Describe iris: 150 flowers, their measurements and their species. -->
 For this demonstration the Iris dataset will be used. From its own documentation in R:
-     This famous (Fisher's or Anderson's) iris data set gives the
-     measurements in centimeters of the variables sepal length and
-     width and petal length and width, respectively, for 50 flowers
-     from each of 3 species of iris.  The species are _Iris setosa_,
-     _versicolor_, and _virginica_.
+
+> This famous (Fisher's or Anderson's) iris data set gives the measurements in centimeters of the variables sepal length and width and petal length and width, respectively, for 50 flowers from each of 3 species of iris.  The species are _Iris setosa_, _versicolor_, and _virginica_.
 
 ```{r}
 head(iris)

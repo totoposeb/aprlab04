@@ -5,23 +5,26 @@
 [![R-CMD-check](https://github.com/totoposeb/aprlab04/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/totoposeb/aprlab04/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
-The goal of aprlab04 is to ...
+This repository contains an implementation of the multiple linear regression algorithm in R, using QR decomposition and a reference class (RC): `linreg()`
 
 ## Installation
 
 You can install the development version of aprlab04 from [GitHub](https://github.com/) with:
 
 ``` r
-# install.packages("pak")
-pak::pak("totoposeb/aprlab04")
+# install.packages("devtools")
+devtools::install_github("totoposeb/aprlab04")
 ```
 
 ## Example
 
-This is a basic example which shows you how to solve a common problem:
+This is a basic example which shows you how to fit a linear regression model with `linreg`:
 
 ``` r
 library(aprlab04)
-## basic example code
+m <- linreg$new(Petal.Length ~ Sepal.Width + Sepal.Length, data = iris)
+m$print()
+m$coef()
+m$plot()
 ```
 
